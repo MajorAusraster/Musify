@@ -9,8 +9,8 @@
 
        <ImageButton
            android:id="@+id/controller_button"
-           android:layout_width="70dp"
-           android:layout_height="70dp"
+           android:layout_width="66dp"
+           android:layout_height="66dp"
            android:layout_alignParentRight="true"
            android:src="@drawable/ic_repeat_24dp"
            android:background="@color/windowBackground_bright"

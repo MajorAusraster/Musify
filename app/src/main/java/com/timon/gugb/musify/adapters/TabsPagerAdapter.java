@@ -2,10 +2,13 @@ package com.timon.gugb.musify.adapters;
 
 /**
  * Created by Timon on 27.02.2016.
+ *
  */
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.timon.gugb.musify.fragments.TabFragment;
 

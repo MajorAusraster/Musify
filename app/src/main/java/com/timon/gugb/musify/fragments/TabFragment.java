@@ -39,7 +39,7 @@ public class TabFragment extends Fragment {
             }
         }
 
-        TabsPagerAdapter adapter = new TabsPagerAdapter(getActivity().getSupportFragmentManager(),tabs);
+        TabsPagerAdapter adapter = new TabsPagerAdapter(getChildFragmentManager(),tabs);
 
 
         pager.setAdapter(adapter);

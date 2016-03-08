@@ -10,7 +10,7 @@ import com.timon.gugb.musify.R;
 /**
  * Created by Timon on 07.03.2016.
  */
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,11 @@ public class SettingsFragment extends PreferenceFragment {
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.fragment_settings);
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle bundle, String s) {
+
     }
 
 }

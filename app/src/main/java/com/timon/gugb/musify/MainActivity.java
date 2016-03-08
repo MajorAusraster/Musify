@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -129,7 +130,14 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
 
     private void setupMyLibraryFragment() {
 
-            /*The Fragment for the main music content and the tabs that belong
+
+
+
+        FragmentManager fm = getSupportFragmentManager();
+
+        FragmentTransaction ft = fm.beginTransaction();
+
+     /*The Fragment for the main music content and the tabs that belong
             * to it*/
         TabFragment MyLibraryFragment;
         //Tabs:
@@ -137,16 +145,13 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         MusicListFragment ArtistsTab;
         MusicListFragment AlbumTab;
 
-
-        FragmentManager fm = getSupportFragmentManager();
-
-        FragmentTransaction ft = fm.beginTransaction();
-
-
-
         AllSongsTab=new MusicListFragment();
         ArtistsTab=new MusicListFragment();
         AlbumTab=new MusicListFragment();
+
+        if(songList.size()==0){
+            Log.e("ohhh", "nooo");
+        }
 
         AllSongsTab.setSongList(songList,player);
         ArtistsTab.setSongList(songList,player);
@@ -163,11 +168,10 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     }
 
     private void setupSettingsFragment(){
-        android.app.FragmentManager fm = getFragmentManager();
-        android.app.FragmentTransaction ft = fm.beginTransaction();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment, new SettingsFragment());
         ft.commit();
-
     }
 
 

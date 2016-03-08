@@ -44,6 +44,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.setSongId(songList.get(position).getID());
     }
 
+
     @Override
     public int getItemCount() {
         return songList == null ? 0 : songList.size();
