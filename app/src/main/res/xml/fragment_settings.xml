@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/sound"
+        >
+
+        <CheckBoxPreference android:title="@string/bass_boost"
+            android:defaultValue="false"
+            android:summary="Improve your overall bass experience"
+            android:key="bassboost" />
+        <CheckBoxPreference android:title="@string/virtulizer"
+            android:defaultValue="false"
+            android:summary="A sound widening effect that creates a stereo feeling"
+            android:key="virtulizer" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

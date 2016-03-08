@@ -1,0 +1,45 @@
+ <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/controller_mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground_dark"
+        android:layout_marginTop="8dp"
+        android:padding="0dp">
+
+       <ImageButton
+           android:id="@+id/controller_button"
+           android:layout_width="70dp"
+           android:layout_height="70dp"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/ic_repeat_24dp"
+           android:background="@color/windowBackground_bright"
+           />
+
+        <TextView
+            android:id="@+id/controller_title"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="75dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="In the End"
+            />
+
+        <TextView
+            android:id="@+id/controller_artist"
+            android:layout_below="@+id/controller_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="75dp"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:layout_marginTop="5dp"
+            android:text="Linking Park"/>
+    </RelativeLayout>

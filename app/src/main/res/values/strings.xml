@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Musify</string>
+    <string name="action_settings">Settings</string>
+    <string name="my_library">My Library</string>
+    <string name="openDrawer">Menu</string>
+    <string name="closeDrawer">Musify</string>
+    <string name="vertical_ellipsis">&#8942;</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="all_songs">All Songs</string>
+    <string name="artist">Artists</string>
+    <string name="album">Albums</string>
+    <string name="need_permission">In order to work, musify needs access to your storage</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_items">No Items</string>
+    <string name="playlists">Playlists</string>
+    <string name="settings">Settings</string>
+    <string name="sound">Sound</string>
+    <string name="bass_boost">Bass Boost</string>
+    <string name="virtulizer">Virtualizer</string>
+</resources>
