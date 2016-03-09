@@ -11,11 +11,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -149,10 +151,6 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         ArtistsTab=new MusicListFragment();
         AlbumTab=new MusicListFragment();
 
-        if(songList.size()==0){
-            Log.e("ohhh", "nooo");
-        }
-
         AllSongsTab.setSongList(songList,player);
         ArtistsTab.setSongList(songList,player);
         AlbumTab.setSongList(songList,player);
@@ -170,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     private void setupSettingsFragment(){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+
         ft.replace(R.id.fragment, new SettingsFragment());
         ft.commit();
     }
@@ -266,9 +265,11 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
                         switch (menuItem.getItemId()) {
                             case R.id.my_library:
                                 setupMyLibraryFragment();
+                                Drawer.closeDrawer(GravityCompat.START);
                                 break;
                             case R.id.settings:
                                 setupSettingsFragment();
+                                Drawer.closeDrawer(GravityCompat.START);
                                 break;
                             case R.id.playlists:
 

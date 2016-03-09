@@ -12,7 +12,6 @@
 
         <FrameLayout
             android:id="@+id/fragment"
-            android:layout_marginTop="?attr/actionBarSize"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -46,6 +45,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
+        app:itemTextColor="@color/drawer_state_color"
+        app:itemIconTint="@color/drawer_state_color"
         app:menu="@menu/menu_drawer">
         <com.timon.gugb.musify.views.ControlView
             android:id="@+id/control_view"

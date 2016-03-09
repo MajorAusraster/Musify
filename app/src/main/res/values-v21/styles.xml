@@ -7,6 +7,7 @@
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+
     </style>
 
     <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
