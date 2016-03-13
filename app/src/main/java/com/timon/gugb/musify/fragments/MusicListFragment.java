@@ -34,6 +34,7 @@ import com.timon.gugb.musify.views.DividerItemDecoration;
 
 /**
  * Created by Timon on 26.02.2016.
+ *
  */
 public class MusicListFragment extends Fragment implements Player.PlayerCallback{
 
@@ -54,7 +55,7 @@ public class MusicListFragment extends Fragment implements Player.PlayerCallback
         final MainActivity activity=(MainActivity)getActivity();
 
         /*TODO dont use just a number*/
-        int paddingTop = 150;
+        int paddingTop = 310;
         recyclerView.setPadding(recyclerView.getPaddingLeft(), paddingTop, recyclerView.getPaddingRight(), recyclerView.getPaddingBottom());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));

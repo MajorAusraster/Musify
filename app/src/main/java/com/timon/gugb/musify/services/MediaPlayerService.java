@@ -14,6 +14,7 @@ import android.os.PowerManager;
 import android.support.annotation.Nullable;
 
 import com.timon.gugb.musify.MainActivity;
+import com.timon.gugb.musify.managers.PreferenceManager;
 import com.timon.gugb.musify.music.Player;
 import com.timon.gugb.musify.music.SDSong;
 import com.timon.gugb.musify.utils.SongList;
@@ -79,7 +80,6 @@ public class MediaPlayerService extends Service implements
         initMusicPlayer();
         initAudioEffects();
 
-
     }
 
 
@@ -98,11 +98,14 @@ public class MediaPlayerService extends Service implements
         if(bassBoost.getStrengthSupported()){
             bassBoost.setStrength(bassBoostStrenght);
         }
-        bassBoost.setEnabled(false);
+        boolean bassEnabled=getSharedPreferences(PreferenceManager.PREFERENCES_FILE_NAME,PreferenceManager.MODE_PRIVATE).getBoolean(PreferenceManager.PREF_BASS_BOOST,false);
+        bassBoost.setEnabled(bassEnabled);
 
         virtu=new Virtualizer(0,player.getAudioSessionId());
         virtu.setStrength(virtualizerStrenght);
-        virtu.setEnabled(false);
+
+        boolean virtuEnabled=getSharedPreferences(PreferenceManager.PREFERENCES_FILE_NAME,PreferenceManager.MODE_PRIVATE).getBoolean(PreferenceManager.PREF_VIRTULIZER,false);
+        virtu.setEnabled(virtuEnabled);
     }
 
 
@@ -259,6 +262,14 @@ public class MediaPlayerService extends Service implements
 
        //TODO notification
 
+    }
+
+    public void setBassBoost(boolean bassBoost){
+        this.bassBoost.setEnabled(bassBoost);
+    }
+
+    public void setVirtualizer(boolean enabled){
+        virtu.setEnabled(enabled);
     }
 
     public class MusicBinder extends Binder {

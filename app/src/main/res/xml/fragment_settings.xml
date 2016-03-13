@@ -7,7 +7,7 @@
         <CheckBoxPreference android:title="@string/bass_boost"
             android:defaultValue="false"
             android:summary="Improve your overall bass experience"
-            android:key="bassboost" />
+            android:key="bassBoost" />
         <CheckBoxPreference android:title="@string/virtulizer"
             android:defaultValue="false"
             android:summary="A sound widening effect that creates a stereo feeling"

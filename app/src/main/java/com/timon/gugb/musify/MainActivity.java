@@ -25,6 +25,7 @@ import android.view.View;
 import com.timon.gugb.musify.fragments.MusicListFragment;
 import com.timon.gugb.musify.fragments.SettingsFragment;
 import com.timon.gugb.musify.fragments.TabFragment;
+import com.timon.gugb.musify.managers.PreferenceManager;
 import com.timon.gugb.musify.managers.StorageManager;
 import com.timon.gugb.musify.music.Player;
 import com.timon.gugb.musify.music.Song;
@@ -169,7 +170,9 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        ft.replace(R.id.fragment, new SettingsFragment());
+        SettingsFragment frag= new SettingsFragment();
+        frag.setPreferenceManager(new PreferenceManager(player,this));
+        ft.replace(R.id.fragment,frag);
         ft.commit();
     }
 
