@@ -38,8 +38,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onResume() {
-        mPreferenceManager.register();
         super.onResume();
+        mPreferenceManager.register();
     }
 
     @Override

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.timon.gugb.musify.MainActivity;
 import com.timon.gugb.musify.R;
-import com.timon.gugb.musify.adapters.RecyclerAdapter;
+import com.timon.gugb.musify.adapters.RecyclerListAdapter;
 import com.timon.gugb.musify.interfaces.ItemClickSupport;
 import com.timon.gugb.musify.utils.HidingScrollListener;
 import com.timon.gugb.musify.utils.RecyclerItemViewHolder;
@@ -42,8 +42,8 @@ public class AlbumListFragment extends Fragment {
         recyclerView.setPadding(recyclerView.getPaddingLeft(), paddingTop, recyclerView.getPaddingRight(), recyclerView.getPaddingBottom());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(songList);
-        recyclerView.setAdapter(recyclerAdapter);
+        RecyclerListAdapter recyclerListAdapter = new RecyclerListAdapter(getContext(),songList);
+        recyclerView.setAdapter(recyclerListAdapter);
         recyclerView.addOnScrollListener(new HidingScrollListener(activity) {
             @Override
             public void onMoved(int distance) {

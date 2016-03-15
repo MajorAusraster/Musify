@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
 import com.timon.gugb.musify.fragments.MusicListFragment;
 import com.timon.gugb.musify.fragments.SettingsFragment;
@@ -170,6 +171,8 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
+        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(1)).start();
+
         SettingsFragment frag= new SettingsFragment();
         frag.setPreferenceManager(new PreferenceManager(player,this));
         ft.replace(R.id.fragment,frag);
@@ -297,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     }
 
     @Override
-    public void onPlayerSongChanged(Song song, int currentPosition) {
+    public void onPlayerSongChanged(Song song, int currentPosition,String listID) {
             /*Control view in the drawer*/
             controlView.setText(song.getTitle(), song.getArtist());
     }

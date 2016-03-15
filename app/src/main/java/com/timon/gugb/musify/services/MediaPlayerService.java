@@ -12,6 +12,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.timon.gugb.musify.MainActivity;
 import com.timon.gugb.musify.managers.PreferenceManager;
@@ -43,6 +44,7 @@ public class MediaPlayerService extends Service implements
 
     /*The current song list that is played*/
     private SongList currSongList;
+    private String songListID;
 
     /*The current song position in the song list that is passed to the service*/
     private int songPosn;
@@ -129,19 +131,45 @@ public class MediaPlayerService extends Service implements
 
         //callback to the interface
         for(Player.PlayerCallback listener:listeners){
-            listener.onPlayerSongChanged(song,songPosn);
+            listener.onPlayerSongChanged(song,songPosn,songListID);
         }
 
     }
 
+    public void playSong(int position,SDSong song){
+
+        player.reset();
+        songTitle=song.getTitle();
+        //get id
+        long currSongUriId = song.getUriId();
+        //set uri
+        Uri trackUri = ContentUris.withAppendedId(
+                android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                currSongUriId);
+        try{
+            player.setDataSource(getApplicationContext(), trackUri);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        player.prepareAsync();
+        songPosn=position;
+
+        //callback to the interface
+        for(Player.PlayerCallback listener:listeners){
+            listener.onPlayerSongChanged(song,songPosn,songListID);
+        }
+
+    }
 
     /**
      * Sets the current song list which is used in case the current song is over and
      * the next songs should be played
      * @param list the list
      */
-    public void setCurrentSongList(SongList list){
+    public void setCurrentSongList(SongList list,String songListID){
         currSongList=list;
+        this.songListID=songListID;
     }
 
     /**
@@ -211,6 +239,7 @@ public class MediaPlayerService extends Service implements
         }
         else{
             //set song list to star if we have reached the end of the song list
+
             songPosn++;
             if(songPosn>=currSongList.size()) songPosn=0;
         }
@@ -237,10 +266,8 @@ public class MediaPlayerService extends Service implements
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        if(player.getCurrentPosition()!=0){
             mp.reset();
             playNext();
-        }
     }
 
     @Override

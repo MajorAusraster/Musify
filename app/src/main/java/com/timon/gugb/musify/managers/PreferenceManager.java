@@ -2,6 +2,7 @@ package com.timon.gugb.musify.managers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.timon.gugb.musify.music.Player;
 
@@ -35,6 +36,7 @@ public class PreferenceManager implements SharedPreferences.OnSharedPreferenceCh
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            Log.e("SHARED", "CHANGED");
             switch (key){
                 case PREF_BASS_BOOST:
                     mPlayer.getMediaPlayerService().setBassBoost(sharedPreferences.getBoolean(PREF_BASS_BOOST,false));

@@ -83,7 +83,7 @@ public class Player {
     * can sync with both*/
     public interface PlayerCallback {
 
-        void onPlayerSongChanged(Song song,int currentPosition);
+        void onPlayerSongChanged(Song song,int currentPosition,String listID);
 
         void onPlayerStateChanged(int playerState);
     }

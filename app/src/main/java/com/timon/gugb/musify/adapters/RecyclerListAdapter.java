@@ -1,5 +1,7 @@
 package com.timon.gugb.musify.adapters;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,12 +18,15 @@ import java.util.List;
 /**
  * Created by Timon on 28.02.2016.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private SongList songList;
+    private int selectedItem=-1;
+    private Context context;
 
-    public RecyclerAdapter(SongList songList) {
+    public RecyclerListAdapter(Context context,SongList songList) {
         this.songList = songList;
+        this.context=context;
     }
 
     @Override
@@ -40,14 +45,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         String artist=songList.get(position).getArtist();
 
         String lenght= Utils.Converter.timeToDisplayForm(songList.get(position).getLength());
+
+
         holder.setItemText(title,artist,lenght);
         holder.setSongId(songList.get(position).getID());
+        if(position==selectedItem){
+            holder.selectItem(context);
+        }else{
+            holder.disselectItem(context);
+        }
     }
 
 
     @Override
     public int getItemCount() {
-        return songList == null ? 0 : songList.size();
+        return songList.size();
+    }
+
+    public void setSelectedItem(int position){
+        selectedItem=position;
+        notifyDataSetChanged();
     }
 
 }

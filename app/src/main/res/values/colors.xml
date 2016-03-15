@@ -4,10 +4,11 @@
     <color name="colorPrimaryDark">#790e15</color>
     <color name="colorTabRed">#ff0b1a</color>
     <color name="textColorPrimary">#FFFFFF</color>
-    <color name="windowBackground">#031828</color>
+    <color name="windowBackground">#0c1620</color>
     <color name="windowBackground_bright">#081e31</color>
     <color name="windowBackground_dark">#02101d</color>
     <color name="navigationBarColor">#000000</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="textColorDarkWhite">#848484</color>
+    <color name="selectedSongBackground">#092136</color>
 </resources>
