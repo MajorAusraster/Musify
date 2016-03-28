@@ -17,4 +17,6 @@
     <string name="sound">Sound</string>
     <string name="bass_boost">Bass Boost</string>
     <string name="virtulizer">Virtualizer</string>
+    <string name="action_search">Search</string>
+    <string name="title_activity_search_results">Search</string>
 </resources>
