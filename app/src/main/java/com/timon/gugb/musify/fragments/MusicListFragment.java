@@ -53,8 +53,8 @@ public class MusicListFragment extends Fragment implements Player.PlayerCallback
 
         final MainActivity activity=(MainActivity)getActivity();
 
-        /*TODO dont use just a number*/
-        int paddingTop = 310;
+
+        final int paddingTop= (int)getContext().getResources().getDimension(R.dimen.margin_top_tab_layout_list);
         recyclerView.setPadding(recyclerView.getPaddingLeft(), paddingTop, recyclerView.getPaddingRight(), recyclerView.getPaddingBottom());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
@@ -88,8 +88,6 @@ public class MusicListFragment extends Fragment implements Player.PlayerCallback
             public void onItemClicked(RecyclerView recyclerView, View view, int position) {
                 RecyclerItemViewHolder dmy= (RecyclerItemViewHolder) recyclerView.getChildViewHolder(view);
 
-                /*this is used that later on when the current song is over the player knows in which list he currently is
-                * TODO this is not working we need to let the player know what ui list he is in and not which song list*/
                 player.getMediaPlayerService().setCurrentSongList(songList,ID);
 
                 player.getMediaPlayerService().playSong(position,(SDSong)songList.findSongById(dmy.getSongId()));
@@ -115,7 +113,6 @@ public class MusicListFragment extends Fragment implements Player.PlayerCallback
     public void onPlayerSongChanged(Song song, int currentPosition,String listID) {
 
         if(ID.equals(listID)){
-            Log.e("STATECHANGED"," "+song.getTitle());
             recyclerListAdapter.setSelectedItem(currentPosition);
         }
     }
