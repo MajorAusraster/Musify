@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         MyLibraryFragment.addTab(AllSongsTab, getString(R.string.all_songs));
         MyLibraryFragment.addTab(ArtistsTab, getString(R.string.artist));
         MyLibraryFragment.addTab(AlbumTab, getString(R.string.album));
-
         ft.replace(R.id.fragment, MyLibraryFragment);
         ft.commit();
 

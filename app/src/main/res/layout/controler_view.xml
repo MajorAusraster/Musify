@@ -28,8 +28,8 @@
             android:layout_marginRight="75dp"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text="In the End"
-            />
+            android:text="Song Title"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/controller_artist"
@@ -41,5 +41,5 @@
             android:textSize="14sp"
             android:singleLine="true"
             android:layout_marginTop="5dp"
-            android:text="Linking Park"/>
+            android:text="Author"/>
     </RelativeLayout>

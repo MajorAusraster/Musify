@@ -74,9 +74,7 @@ public class FloatingActionButton extends android.support.design.widget.Floating
     }
 
     public void toggle() {
-        if (mAnimatorSet != null) {
-            mAnimatorSet.cancel();
-        }
+        if (mAnimatorSet != null) mAnimatorSet.cancel();
 
         mAnimatorSet = new AnimatorSet();
         final boolean isPlay = mDrawable.isPlay();
