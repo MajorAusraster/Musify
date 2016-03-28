@@ -25,6 +25,7 @@ import java.util.Random;
 
 /**
  * Created by Timon on 05.03.2016.
+ *
  */
 public class MediaPlayerService extends Service implements
         MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
@@ -61,8 +62,8 @@ public class MediaPlayerService extends Service implements
     /*Bass booster and virtulizer that are used to improve the sound quality*/
     private BassBoost bassBoost;
     private Virtualizer virtu;
-    private short bassBoostStrenght=1000;
-    private short virtualizerStrenght=750;
+    private short bassBoostStrenght=900;
+    private short virtualizerStrenght=810;
 
     /*The list of all interfaces which are used to create callbacks
     * this list is passed from the player.class to the service*/
@@ -103,13 +104,13 @@ public class MediaPlayerService extends Service implements
         if(bassBoost.getStrengthSupported()){
             bassBoost.setStrength(bassBoostStrenght);
         }
-        boolean bassEnabled=getSharedPreferences(PreferenceManager.PREFERENCES_FILE_NAME,PreferenceManager.MODE_PRIVATE).getBoolean(PreferenceManager.PREF_BASS_BOOST, false);
+        boolean bassEnabled=getApplicationContext().getSharedPreferences(PreferenceManager.PREFERENCES_FILE_NAME,PreferenceManager.MODE_PRIVATE).getBoolean(PreferenceManager.PREF_BASS_BOOST, false);
         bassBoost.setEnabled(bassEnabled);
 
         virtu=new Virtualizer(0,player.getAudioSessionId());
         virtu.setStrength(virtualizerStrenght);
 
-        boolean virtuEnabled=getSharedPreferences(PreferenceManager.PREFERENCES_FILE_NAME,PreferenceManager.MODE_PRIVATE).getBoolean(PreferenceManager.PREF_VIRTULIZER,false);
+        boolean virtuEnabled=getApplicationContext().getSharedPreferences(PreferenceManager.PREFERENCES_FILE_NAME,PreferenceManager.MODE_PRIVATE).getBoolean(PreferenceManager.PREF_VIRTULIZER,false);
         virtu.setEnabled(virtuEnabled);
     }
 
