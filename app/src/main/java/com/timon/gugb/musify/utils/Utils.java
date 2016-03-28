@@ -1,5 +1,7 @@
 package com.timon.gugb.musify.utils;
 
+import android.content.Context;
+
 /**
  * Created by Timon on 02.03.2016.
  */
