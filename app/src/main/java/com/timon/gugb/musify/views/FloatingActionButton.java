@@ -9,8 +9,10 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Property;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 
 import com.timon.gugb.musify.R;
+import com.timon.gugb.musify.utils.Utils;
 
 /**
  * Created by Timon on 03.03.2016.
@@ -41,6 +43,7 @@ public class FloatingActionButton extends android.support.design.widget.Floating
 
     private AnimatorSet mAnimatorSet;
     private int mBackgroundColor;
+    private boolean isFadeIn=false;
 
     public FloatingActionButton(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -96,6 +99,20 @@ public class FloatingActionButton extends android.support.design.widget.Floating
     private void setColor(int color) {
         mBackgroundColor = color;
         invalidate();
+    }
+
+    public void fadeOut(){
+        this.setX(this.getX() + Utils.Converter.dpsToPixel(getContext(), 80));
+        isFadeIn=false;
+    }
+
+    public void fadeIn(){
+        this.animate().translationX(0).setDuration(650);
+        isFadeIn=true;
+    }
+
+    public boolean isFadeIn(){
+        return isFadeIn;
     }
 
     private int getColor() {

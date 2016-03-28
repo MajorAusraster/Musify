@@ -34,6 +34,7 @@ import com.timon.gugb.musify.managers.StorageManager;
 import com.timon.gugb.musify.music.Player;
 import com.timon.gugb.musify.music.Song;
 import com.timon.gugb.musify.utils.SongList;
+import com.timon.gugb.musify.utils.Utils;
 import com.timon.gugb.musify.views.ControlView;
 
 public class MainActivity extends AppCompatActivity implements Player.PlayerCallback{
@@ -237,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
                 }
             }
         });
+        floatingActionButton.fadeOut();
     };
 
 
@@ -305,6 +307,9 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     public void onPlayerSongChanged(Song song, int currentPosition,String listID) {
             /*Control view in the drawer*/
             controlView.setText(song.getTitle(), song.getArtist());
+            if(!floatingActionButton.isFadeIn()){
+                floatingActionButton.fadeIn();
+            }
     }
 
     @Override

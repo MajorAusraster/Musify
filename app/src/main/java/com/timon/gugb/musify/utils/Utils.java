@@ -37,6 +37,11 @@ public class Utils {
             return dmy;
         }
 
+        public static int dpsToPixel(Context context,int dps){
+            final float scale = context.getResources().getDisplayMetrics().density;
+            return (int) (dps * scale + 0.5f);
+        }
+
     }
 
 }
