@@ -29,7 +29,6 @@ public class PreferenceManager implements SharedPreferences.OnSharedPreferenceCh
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            Log.e("SHARED", "CHANGED");
             switch (key){
                 case PREF_BASS_BOOST:
                     mPlayer.getMediaPlayerService().setBassBoost(sharedPreferences.getBoolean(PREF_BASS_BOOST,false));

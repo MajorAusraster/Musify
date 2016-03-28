@@ -11,4 +11,7 @@
     <dimen name="pause_bar_width">5dp</dimen>
     <dimen name="pause_bar_height">18dp</dimen>
     <dimen name="pause_bar_distance">5dp</dimen>
+    <dimen name="margin_top_prefences">60dp</dimen>
+    <dimen name="margin_top_tab_layout_list">105dp</dimen>
+
 </resources>
