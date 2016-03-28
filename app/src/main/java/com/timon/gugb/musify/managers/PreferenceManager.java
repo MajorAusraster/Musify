@@ -26,13 +26,6 @@ public class PreferenceManager implements SharedPreferences.OnSharedPreferenceCh
         mContext=context;
     }
 
-    public void register(){
-        mContext.getSharedPreferences(PREFERENCES_FILE_NAME,MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
-    }
-
-    public void unregister(){
-        mContext.getSharedPreferences(PREFERENCES_FILE_NAME,MODE_PRIVATE).unregisterOnSharedPreferenceChangeListener(this);
-    }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {

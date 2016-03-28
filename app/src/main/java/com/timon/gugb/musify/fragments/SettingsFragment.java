@@ -39,12 +39,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        mPreferenceManager.register();
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mPreferenceManager);
     }
 
     @Override
     public void onPause() {
-        mPreferenceManager.unregister();
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mPreferenceManager);
         super.onPause();
     }
 
@@ -56,7 +56,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = super.onCreateView(inflater, container, savedInstanceState);
-            getListView().setPadding(10, 190, 10, 10);
+
+        final int padding_top= (int)getContext().getResources().getDimension(R.dimen.margin_top_prefences);
+            getListView().setPadding(10, padding_top, 10, 10);
              getListView().addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
         return v;
     }
