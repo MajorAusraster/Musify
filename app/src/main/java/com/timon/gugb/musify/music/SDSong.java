@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.ParcelFileDescriptor;
 
 import java.io.FileDescriptor;
@@ -23,7 +24,7 @@ public class SDSong extends Song {
         this.uriId=uriId;
     }
 
-    public Bitmap getAlbumart(Context context)
+    public Bitmap getCover(Context context)
     {
         Bitmap bm = null;
         try

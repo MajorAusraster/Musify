@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -32,6 +33,7 @@ import com.timon.gugb.musify.fragments.TabFragment;
 import com.timon.gugb.musify.managers.PreferenceManager;
 import com.timon.gugb.musify.managers.StorageManager;
 import com.timon.gugb.musify.music.Player;
+import com.timon.gugb.musify.music.SDSong;
 import com.timon.gugb.musify.music.Song;
 import com.timon.gugb.musify.utils.SongList;
 import com.timon.gugb.musify.utils.Utils;
@@ -289,7 +291,6 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
                         }
 
 
-
                         return true;
                     }
                 });
@@ -303,14 +304,29 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         return toolbar;
     }
 
+    private void loadSDSongCover(SDSong song) {
+        Bitmap cover=song.getCover(this);
+        if(cover!=null){
+            controlView.setCover(cover);
+        }else{
+            controlView.setCoverToDefault();
+        }
+    }
+
     @Override
     public void onPlayerSongChanged(Song song, int currentPosition,String listID) {
             /*Control view in the drawer*/
             controlView.setText(song.getTitle(), song.getArtist());
+
+        if(song instanceof SDSong){
+            loadSDSongCover((SDSong) song);
+        }
+
             if(!floatingActionButton.isFadeIn()){
                 floatingActionButton.fadeIn();
             }
     }
+
 
     @Override
     public void onPlayerStateChanged(int playerState) {

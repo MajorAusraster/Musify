@@ -1,14 +1,14 @@
 package com.timon.gugb.musify.views;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.timon.gugb.musify.R;
@@ -16,7 +16,7 @@ import com.timon.gugb.musify.R;
 /**
  * Created by Timon on 04.03.2016.
  */
-public class ControlView extends FrameLayout {
+public class ControlView extends LinearLayout  {
 
 
     public static final int MODE_REPEAT=212;
@@ -28,6 +28,8 @@ public class ControlView extends FrameLayout {
     private TextView titleView,artistView;
     private ImageButton toggleModeBotton;
     private RelativeLayout mainContentHolder;
+    private ImageView coverView;
+
 
     public ControlView(Context context) {
         super(context);
@@ -52,7 +54,7 @@ public class ControlView extends FrameLayout {
         titleView= (TextView) mainContentHolder.findViewById(R.id.controller_title);
         artistView= (TextView) mainContentHolder.findViewById(R.id.controller_artist);
         toggleModeBotton= (ImageButton) mainContentHolder.findViewById(R.id.controller_button);
-
+        coverView= (ImageView) mainContentHolder.findViewById(R.id.controller_cover);
         addView(mainContentHolder);
     }
 
@@ -63,6 +65,17 @@ public class ControlView extends FrameLayout {
 
     public int getCurrentMode(){
         return currentMode;
+    }
+
+    public void setCover(Bitmap bm){
+        coverView.setPadding(0,0,0,0);
+        coverView.setImageBitmap(bm);
+    }
+
+    public void setCoverToDefault(){
+        coverView.setImageDrawable(getResources().getDrawable(R.drawable.ic_audiotrack_24dp));
+       int padding= ((int) getResources().getDimension(R.dimen.padding_cover));
+        coverView.setPadding(padding,padding,padding,padding);
     }
 
     public void setCurrentMode(int currentMode){

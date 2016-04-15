@@ -5,7 +5,7 @@
         android:layout_height="wrap_content"
         android:background="@color/windowBackground_dark"
         android:layout_marginTop="8dp"
-        android:padding="0dp">
+        >
 
        <ImageButton
            android:id="@+id/controller_button"
@@ -42,4 +42,48 @@
             android:singleLine="true"
             android:layout_marginTop="5dp"
             android:text="Author"/>
+     
+     <android.support.v7.widget.AppCompatImageView
+         android:id="@+id/controller_cover"
+         android:layout_width="80dp"
+         android:layout_height="80dp"
+         android:background="@color/selectedSongBackground"
+         android:layout_below="@+id/controller_artist"
+         android:layout_marginTop="10dp"
+         android:src="@drawable/ic_audiotrack_24dp"
+         android:padding="@dimen/padding_cover"/>
+
+     <ImageButton
+         android:id="@+id/controller_prev"
+         android:layout_width="56dp"
+         android:layout_height="56dp"
+         android:src="@drawable/ic_skip_previous_39dp"
+         android:background="@android:color/transparent"
+         android:layout_toRightOf="@+id/controller_cover"
+         android:layout_below="@+id/controller_artist"
+         android:layout_marginTop="23dp"
+         android:layout_marginLeft="30dp"/>
+
+     <ImageButton
+         android:id="@+id/controller_next"
+         android:layout_width="56dp"
+         android:layout_height="56dp"
+         android:src="@drawable/ic_skip_next_39dp"
+         android:background="@android:color/transparent"
+         android:layout_toRightOf="@+id/controller_prev"
+         android:layout_below="@+id/controller_artist"
+         android:layout_marginTop="23dp"
+         android:layout_marginLeft="30dp"/>
+
+     <Button
+         android:layout_marginTop="7dp"
+         android:layout_marginRight="9dp"
+         android:id="@+id/controller_setting"
+         android:layout_below="@+id/controller_button"
+         android:layout_alignParentRight="true"
+         android:layout_width="56dp"
+         android:layout_height="56dp"
+         android:background="@android:color/transparent"
+         android:text="@string/vertical_ellipsis"
+         android:textSize="30sp"/>
     </RelativeLayout>
