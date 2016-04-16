@@ -30,6 +30,7 @@ import android.view.animation.DecelerateInterpolator;
 import com.timon.gugb.musify.fragments.MusicListFragment;
 import com.timon.gugb.musify.fragments.SettingsFragment;
 import com.timon.gugb.musify.fragments.TabFragment;
+import com.timon.gugb.musify.managers.NotifyManager;
 import com.timon.gugb.musify.managers.PreferenceManager;
 import com.timon.gugb.musify.managers.StorageManager;
 import com.timon.gugb.musify.music.Player;
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     /*The actucal player that is used to communicate to the service*/
     private Player player;
 
+    private NotifyManager notifyManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         setupFAB();
         setupControlView();
 
+        notifyManager=new NotifyManager(this);
 
         player=new Player(this);
         player.prepareServiceConnection();
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     protected void onStart(){
         super.onStart();
         player.startService();
+        notifyManager.postWidgetNotification();
     }
 
     @Override
@@ -353,13 +358,13 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
             /*Control view in the drawer*/
             controlView.setText(song.getTitle(), song.getArtist());
 
-        if(song instanceof SDSong){
-            loadSDSongCover((SDSong) song);
-        }
-
             if(!floatingActionButton.isFadeIn()){
                 floatingActionButton.fadeIn();
             }
+
+            if(song instanceof SDSong){
+            loadSDSongCover((SDSong) song);
+             }
     }
 
 
