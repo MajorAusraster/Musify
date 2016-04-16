@@ -35,6 +35,7 @@ import com.timon.gugb.musify.managers.StorageManager;
 import com.timon.gugb.musify.music.Player;
 import com.timon.gugb.musify.music.SDSong;
 import com.timon.gugb.musify.music.Song;
+import com.timon.gugb.musify.services.MediaPlayerService;
 import com.timon.gugb.musify.utils.SongList;
 import com.timon.gugb.musify.utils.Utils;
 import com.timon.gugb.musify.views.ControlView;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         setSupportActionBar(toolbar);
         setupDrawer();
         setupFAB();
+        setupControlView();
 
 
         player=new Player(this);
@@ -139,9 +141,6 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
 
 
     private void setupMyLibraryFragment() {
-
-
-
 
         FragmentManager fm = getSupportFragmentManager();
 
@@ -243,7 +242,43 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         floatingActionButton.fadeOut();
     };
 
+    private void setupControlView(){
+        controlView.setOnClickListener(new ControlView.onClickListener() {
+            @Override
+            public void onClick(int item) {
+                switch (item){
+                    case ControlView.BUTTON_TOGGLE_MODE:
+                        //switch the button modes
+                        switch (controlView.getCurrentMode()){
+                            case ControlView.MODE_REPEAT:
+                                controlView.setCurrentMode(ControlView.MODE_REPEAT_ONE);
+                                player.getMediaPlayerService().setCurrentMode(MediaPlayerService.MODE_REPEAT_ONE);
+                                break;
+                            case ControlView.MODE_REPEAT_ONE:
+                                controlView.setCurrentMode(ControlView.MODE_SHUFFLE);
+                                player.getMediaPlayerService().setCurrentMode(MediaPlayerService.MODE_SHUFFLE);
 
+                                break;
+                            case ControlView.MODE_SHUFFLE:
+                                controlView.setCurrentMode(ControlView.MODE_REPEAT);
+                                player.getMediaPlayerService().setCurrentMode(MediaPlayerService.MODE_REPEAT);
+                                break;
+                        }
+                        break;
+
+
+                    case ControlView.BUTTON_NEXT:
+                        if(player.getMediaPlayerService().isPlaying())
+                        player.getMediaPlayerService().playNext();
+                        break;
+                    case ControlView.BUTTON_PREVIOUS:
+                        if(player.getMediaPlayerService().isPlaying())
+                        player.getMediaPlayerService().playPrev();
+                        break;
+                }
+            }
+        });
+    }
     private void setupDrawer() {
         mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.openDrawer,R.string.closeDrawer){
 

@@ -59,7 +59,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         final int padding_top= (int)getContext().getResources().getDimension(R.dimen.margin_top_prefences);
             getListView().setPadding(10, padding_top, 10, 10);
-             getListView().addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+            // getListView().addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
         return v;
     }
 

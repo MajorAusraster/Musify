@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
+        android:title="@string/appereance"
+        >
+
+        <ListPreference
+            android:key="language_preference"
+            android:title="@string/music_controller"
+            android:entries="@array/music_controller_mode"
+            android:entryValues="@array/music_controller_mode_entrys"
+            />
+
+
+    </PreferenceCategory>
+
+
+
+
+
+    <PreferenceCategory
         android:title="@string/sound"
         >
 

@@ -19,4 +19,12 @@
     <string name="virtulizer">Virtualizer</string>
     <string name="action_search">Search</string>
     <string name="title_activity_search_results">Search</string>
+    <string name="appereance">Appearance</string>
+    <string name="music_controller">Music controller</string>
+
+    <string-array name="music_controller_mode">
+        <item>"Simple controller in app drawer"</item>
+        <item>"Controller in all screens"</item>
+    </string-array>
+
 </resources>

@@ -32,7 +32,9 @@ public class MediaPlayerService extends Service implements
         MediaPlayer.OnCompletionListener{
 
 
-
+    public static final int MODE_REPEAT=212;
+    public static final int MODE_REPEAT_ONE=2312;
+    public static final int MODE_SHUFFLE=12;
 
     /*The ID for the notification*/
     private static final int NOTIFY_ID=1321;
@@ -54,10 +56,11 @@ public class MediaPlayerService extends Service implements
     /*The current song Title*/
     private String songTitle="";
 
-    /*Boolean to check if the current mode is shuffel and the random to generate the random song po
-    * sition*/
-    private boolean shuffle=false;
+    /* random to generate the random song position*/
     private Random rand;
+
+    /*current play mode*/
+    private int currentMode=MODE_REPEAT;
 
     /*Bass booster and virtulizer that are used to improve the sound quality*/
     private BassBoost bassBoost;
@@ -226,7 +229,7 @@ public class MediaPlayerService extends Service implements
 
     public void playPrev(){
         //Play the last song in the list
-        if(shuffle){
+        if(currentMode==MODE_SHUFFLE){
 
         }else {
             if (songPosn == 0) {
@@ -235,11 +238,11 @@ public class MediaPlayerService extends Service implements
                 songPosn--;
             }
         }
-        playSong((SDSong)currSongList.get(songPosn));
+        playSong((SDSong) currSongList.get(songPosn));
     }
 
     public void playNext(){
-        if(shuffle){
+        if(currentMode==MODE_SHUFFLE){
             int newSong = songPosn;
             while(newSong==songPosn){
                 newSong=rand.nextInt(currSongList.size());
@@ -275,9 +278,16 @@ public class MediaPlayerService extends Service implements
 
     @Override
     public void onCompletion(MediaPlayer mp) {
+        if(currentMode==MODE_REPEAT_ONE){
+            seek(0);
+            startPlayer();
+        }else{
             mp.reset();
             playNext();
+        }
+
     }
+
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
@@ -306,6 +316,10 @@ public class MediaPlayerService extends Service implements
 
     public void setVirtualizer(boolean enabled){
         virtu.setEnabled(enabled);
+    }
+
+    public void setCurrentMode(int mode){
+        currentMode=mode;
     }
 
     public class MusicBinder extends Binder {

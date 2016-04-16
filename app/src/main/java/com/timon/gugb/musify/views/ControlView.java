@@ -23,13 +23,19 @@ public class ControlView extends LinearLayout  {
     public static final int MODE_REPEAT_ONE=2312;
     public static final int MODE_SHUFFLE=12;
 
+    public static final int BUTTON_TOGGLE_MODE=22;
+    public static final int BUTTON_NEXT=2;
+    public static final int BUTTON_PREVIOUS=800;
+
     private int currentMode=MODE_REPEAT;
 
     private TextView titleView,artistView;
     private ImageButton toggleModeBotton;
     private RelativeLayout mainContentHolder;
     private ImageView coverView;
+    private ImageButton next,previous;
 
+    private onClickListener listener;
 
     public ControlView(Context context) {
         super(context);
@@ -55,7 +61,48 @@ public class ControlView extends LinearLayout  {
         artistView= (TextView) mainContentHolder.findViewById(R.id.controller_artist);
         toggleModeBotton= (ImageButton) mainContentHolder.findViewById(R.id.controller_button);
         coverView= (ImageView) mainContentHolder.findViewById(R.id.controller_cover);
+        next= (ImageButton) mainContentHolder.findViewById(R.id.controller_next);
+        previous= (ImageButton) mainContentHolder.findViewById(R.id.controller_prev);
         addView(mainContentHolder);
+
+        initListeners();
+
+    }
+
+    private void initListeners() {
+
+        toggleModeBotton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onClick(BUTTON_TOGGLE_MODE);
+                }
+            }
+        });
+
+        next.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onClick(BUTTON_NEXT);
+                }
+            }
+        });
+
+        previous.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onClick(BUTTON_PREVIOUS);
+                }
+            }
+        });
+
+
+    }
+
+    public void setOnClickListener(onClickListener listener){
+        this.listener=listener;
     }
 
     public void setText(CharSequence title,CharSequence artist){
@@ -92,6 +139,10 @@ public class ControlView extends LinearLayout  {
                 break;
 
         }
+    }
+
+    public interface onClickListener{
+        void onClick(int item);
     }
 
 }
