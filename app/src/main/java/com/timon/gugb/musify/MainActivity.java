@@ -87,11 +87,12 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         setupControlView();
 
         notifyManager=new NotifyManager(this);
-
+        notifyManager.postWidgetNotification();
         player=new Player(this);
         player.prepareServiceConnection();
         player.registerCallbackListener(this);
         loadSongs();
+
     }
 
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     protected void onStart(){
         super.onStart();
         player.startService();
-        notifyManager.postWidgetNotification();
+
     }
 
     @Override
@@ -348,8 +349,10 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
         Bitmap cover=song.getCover(this);
         if(cover!=null){
             controlView.setCover(cover);
+            notifyManager.getWidgetNotification().setCover(cover);
         }else{
             controlView.setCoverToDefault();
+            notifyManager.getWidgetNotification().setCover(null);
         }
     }
 
@@ -357,14 +360,17 @@ public class MainActivity extends AppCompatActivity implements Player.PlayerCall
     public void onPlayerSongChanged(Song song, int currentPosition,String listID) {
             /*Control view in the drawer*/
             controlView.setText(song.getTitle(), song.getArtist());
+            notifyManager.getWidgetNotification().setText(song.getTitle(), song.getArtist());
 
-            if(!floatingActionButton.isFadeIn()){
-                floatingActionButton.fadeIn();
-            }
 
-            if(song instanceof SDSong){
-            loadSDSongCover((SDSong) song);
+            if(song instanceof SDSong) {
+                loadSDSongCover((SDSong) song);
              }
+
+        notifyManager.getWidgetNotification().update();
+        if(!floatingActionButton.isFadeIn()){
+            floatingActionButton.fadeIn();
+        }
     }
 
 

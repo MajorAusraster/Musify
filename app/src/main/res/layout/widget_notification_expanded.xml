@@ -2,13 +2,13 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="100dp"
     android:background="@color/notification_background"
     >
 
     <ImageView
         android:id="@+id/notification_cover"
-        android:layout_width="63dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
         android:contentDescription="@string/app_name"
         android:src="@drawable/no_cover" />
@@ -16,13 +16,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
         android:layout_margin="8dp"
         android:layout_toRightOf="@+id/notification_cover"
-        android:gravity="center_vertical"
 
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
         <TextView
             android:id="@+id/notification_title"
@@ -31,6 +31,7 @@
             android:layout_marginRight="120dp"
             android:text="Song title"
             android:singleLine="true"
+            android:textSize="15sp"
             android:textStyle="bold"
             />
 
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="artist"
             android:singleLine="true"
+            android:textSize="15sp"
             android:layout_marginRight="120dp"
             />
     </LinearLayout>
@@ -49,18 +51,36 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_skip_next"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+
+
+
+
 
     <ImageButton
         android:id="@+id/notification_play"
         android:layout_width="50dp"
         android:layout_height="45dp"
-        android:layout_toLeftOf="@id/notification_next"
-        android:layout_centerVertical="true"
         android:src="@drawable/ic_pause_24dp"
         android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@id/linearLayout"
+        android:layout_marginRight="105dp"
+         />
+
+
+    <ImageButton
+        android:id="@+id/notification_prev"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_skip_previous"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="101dp"
+
         />
 
 </RelativeLayout>

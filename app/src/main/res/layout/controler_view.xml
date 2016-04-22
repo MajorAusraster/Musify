@@ -47,11 +47,10 @@
          android:id="@+id/controller_cover"
          android:layout_width="80dp"
          android:layout_height="80dp"
-         android:background="@color/selectedSongBackground"
          android:layout_below="@+id/controller_artist"
          android:layout_marginTop="16dp"
-         android:src="@drawable/ic_audiotrack_24dp"
-         android:padding="@dimen/padding_cover"/>
+         android:src="@drawable/no_cover"
+         />
 
      <ImageButton
          android:id="@+id/controller_prev"

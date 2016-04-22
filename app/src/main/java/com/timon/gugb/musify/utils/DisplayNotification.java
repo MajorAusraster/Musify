@@ -27,6 +27,7 @@ public class DisplayNotification implements Runnable {
         mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         this.title=title;
         this.text=text;
+        this.sticky=sticky;
     }
 
     @Override

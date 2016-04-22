@@ -120,9 +120,8 @@ public class ControlView extends LinearLayout  {
     }
 
     public void setCoverToDefault(){
-        coverView.setImageDrawable(getResources().getDrawable(R.drawable.ic_audiotrack_24dp));
-       int padding= ((int) getResources().getDimension(R.dimen.padding_cover));
-        coverView.setPadding(padding,padding,padding,padding);
+        coverView.setImageDrawable(getResources().getDrawable(R.drawable.no_cover));
+
     }
 
     public void setCurrentMode(int currentMode){

@@ -19,7 +19,7 @@ import com.timon.gugb.musify.utils.WidgetNotification;
  */
 public class NotifyManager {
 
-    public final static int NOTIFICATION_ID=21;
+    public final static int NOTIFICATION_ID=251;
 
     private Context context;
     private WidgetNotification widgetNotification;
@@ -35,10 +35,8 @@ public class NotifyManager {
     }
 
     public void postWidgetNotification(){
-        Handler mHandler = new Handler();
-        Context appContext = context.getApplicationContext();
-        widgetNotification=new WidgetNotification(appContext);
-        mHandler.post(widgetNotification);
+        widgetNotification=new WidgetNotification(context);
+        widgetNotification.makeNotification();
     }
 
     public WidgetNotification getWidgetNotification(){

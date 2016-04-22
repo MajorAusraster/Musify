@@ -11,4 +11,5 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="textColorDarkWhite">#848484</color>
     <color name="selectedSongBackground">#092136</color>
+    <color name="notification_background">#2e363e</color>
 </resources>

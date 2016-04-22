@@ -26,6 +26,9 @@
 
         <service android:name="com.timon.gugb.musify.services.MediaPlayerService" />
 
+        <receiver android:name=".EventReceiver" >
+        </receiver>
+
     </application>
 
 </manifest>
